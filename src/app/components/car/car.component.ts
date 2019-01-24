@@ -45,14 +45,15 @@ export class CarComponent {
     /**
      * Произвести заправку топлива в бак автомобиля
      */
-    public refuel(fuel) {
+    public refuel(fuel: number): void {
         fuel = Number(fuel);
-        // Свободный обьем в топливном баке
-        const freeFuelSpace = this.fuelTankCapacity - this.fuel;
 
         if (fuel <= 0) {
             return console.error('The amount of fuel must be greater than zero');
         }
+
+        // Свободный обьем в топливном баке
+        const freeFuelSpace = this.fuelTankCapacity - this.fuel;
 
         this.fuel +=  freeFuelSpace > fuel ? fuel : freeFuelSpace;
     }
@@ -60,7 +61,7 @@ export class CarComponent {
     /**
      * Выполнить поездку на указанное растояние, с соответсвующим расходом топлива автомобилем
      */
-    public drive(miles) {
+    public drive(miles: number): void {
         miles = Number(miles);
 
         if (miles <= 0) {
