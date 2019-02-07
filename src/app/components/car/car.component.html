@@ -1,0 +1,24 @@
+<h2>Автомобиль: {{ carMake }} {{ carModel }}</h2>
+<ul>
+    <li>Пробег: {{ mileage}}</li>
+    <li>Объем топливного бака: {{ fuelTankCapacity }}л.</li>
+    <li>Топлива в баке: {{ fuel }}л.</li>
+    <li>
+        <details open>
+            <summary>Характеристики:</summary>
+            <ol>
+                <li *ngFor="let spec of specifications">
+                    {{ spec }}
+                </li>
+            </ol>
+        </details>
+    </li>
+</ul>
+<div>
+    <input type = "number" #milesKol #fuelKol min="1" max="{{ fuelTankCapacity / expense }}"  [disabled]="!fuel" value = "10" placeholder="0">
+    <button (click)="drive(milesKol.value)" [disabled]="!fuel">Eхать</button>
+</div>
+<div *ngIf="fuel < 5">
+    <input type = "number" #fuelKol min="1" max="{{ fuelTankCapacity }}" value = "10"  placeholder="0">
+    <button (click)="refuel(fuelKol.value)">Заправить</button>
+</div>
